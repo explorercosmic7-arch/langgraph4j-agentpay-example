@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.agentpay</groupId>
+  <artifactId>langgraph4j-agentpay-example</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>langgraph4j-agentpay-example</name>
+  <description>Minimal LangGraph4j 3-node pay-per-task graph settled via AgentPay REST (escrow hold → work → release/refund)</description>
+
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <langgraph4j.version>1.9.9</langgraph4j.version>
+    <jackson.version>2.18.2</jackson.version>
+  </properties>
+
+  <dependencies>
+    <!-- LangGraph4j core (Bartolomeo Sorrentino) -->
+    <dependency>
+      <groupId>org.bsc.langgraph4j</groupId>
+      <artifactId>langgraph4j-core</artifactId>
+      <version>${langgraph4j.version}</version>
+    </dependency>
+
+    <!-- JSON for AgentPay REST bodies -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.5.0</version>
+        <configuration>
+          <mainClass>com.agentpay.langgraph4j.PayPerTaskGraphApp</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
